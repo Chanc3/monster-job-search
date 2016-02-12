@@ -34,15 +34,7 @@ public class Info {
 		System.out.println("\n");
 	}
 
-	/**
-	 * Static helper method displays the object name, number of modifiers, field
-	 * names and type, method names and type, toString
-	 */
-	public static void displayInfo(Object obj) {
-		// Print object type
-		System.out.println("The object is of type: " + obj.getClass().getSimpleName());
-		// Print number of modifiers
-		System.out.println("The number of modifiers are: " + obj.getClass().getModifiers());
+	public static void displayFields(Object obj) {
 		// Place object fields into array
 		Field[] fields = obj.getClass().getDeclaredFields();
 		// Print fields statement
@@ -52,15 +44,21 @@ public class Info {
 			// Print the name and type of each field
 			System.out.print(fields[i].getName() + " = " + fields[i].getType().getName() + ", ");
 		}
-		// Place object methods into array
-		Method[] methods = obj.getClass().getDeclaredMethods();
-		// Print methods statement
-		System.out.print("\nThe methods are: ");
-		// Iterate through the fields array
-		for (int i = 0; i < methods.length; i++) {
-			// Print name and type of each method
-			System.out.print(methods[i].getName() + " = " + methods[i].getReturnType().getName() + ", ");
-		}
+	}
+
+	/**
+	 * Static helper method displays the object name, number of modifiers, field
+	 * names and type, method names and type, toString
+	 */
+	public static void displayInfo(Object obj) {
+		// Print object type
+		System.out.println("The object is of type: " + obj.getClass().getSimpleName());
+		// Print number of modifiers
+		System.out.println("The number of modifiers are: " + obj.getClass().getModifiers());
+		// Print object fields
+		displayFields(obj);
+		// Print object methods
+		displayMethods(obj);
 		// Print object toString
 		System.out.println("The object toString: " + obj.toString());
 	}
@@ -87,11 +85,22 @@ public class Info {
 		}
 	}
 
-	public static String get2DInfo(Object[][] objects) {
-		String info;
-		return info;
+	public static void displayMethods(Object obj) {
+		// Place object methods into array
+		Method[] methods = obj.getClass().getDeclaredMethods();
+		// Print methods statement
+		System.out.print("\nThe methods are: ");
+		// Iterate through the fields array
+		for (int i = 0; i < methods.length; i++) {
+			// Print name and type of each method
+			System.out.print(methods[i].getName() + "(),");
+		}
 	}
 
+	// public static String get2DInfo(Object[][] objects) {
+	// String info;
+	// return info;
+	// }
 	/**
 	 * Static helper method calls the toString of an object. Passes it to a
 	 * String variable and then returns the String.
