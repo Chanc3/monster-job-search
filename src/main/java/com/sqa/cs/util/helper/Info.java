@@ -24,14 +24,14 @@ import java.lang.reflect.Method;
 public class Info {
 
 	public static void display2DInfo(Object[][] objects) {
+		System.out.println("Display 2D Matrix:\n");
 		// Iterate through two dimensional array of objects by row
 		for (int i = 0; i < objects.length; i++) {
-			System.out.println("");
 			for (int j = 0; j < objects[i].length; j++) {
 				System.out.print("\t" + objects[i][j]);
 			}
+			System.out.println("\n");
 		}
-		System.out.println("\n");
 	}
 
 	public static void displayFields(Object obj) {
@@ -97,10 +97,20 @@ public class Info {
 		}
 	}
 
-	// public static String get2DInfo(Object[][] objects) {
-	// String info;
-	// return info;
-	// }
+	public static String get2DInfo(Object[][] objects) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Display 2D Matrix:\n\n");
+		// Iterate through two dimensional array of objects by row
+		for (int i = 0; i < objects.length; i++) {
+			System.out.println("");
+			for (int j = 0; j < objects[i].length; j++) {
+				sb.append("\t" + objects[i][j]);
+			}
+			sb.append("\n\n");
+		}
+		return sb.toString();
+	}
+
 	/**
 	 * Static helper method calls the toString of an object. Passes it to a
 	 * String variable and then returns the String.
