@@ -7,6 +7,9 @@
  */
 package com.sqa.cs.util.helper;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
 /**
  * Info //ADDD (description of class)
  * <p>
@@ -20,11 +23,46 @@ package com.sqa.cs.util.helper;
  */
 public class Info {
 
+	public static void display2DInfo(Object[][] objects) {
+		// Iterate through two dimensional array of objects by row
+		for (int i = 0; i < objects.length; i++) {
+			System.out.println("");
+			for (int j = 0; j < objects[i].length; j++) {
+				System.out.print("\t" + objects[i][j]);
+			}
+		}
+		System.out.println("\n");
+	}
+
 	/**
-	 * Static helper method displays the object toString
+	 * Static helper method displays the object name, number of modifiers, field
+	 * names and type, method names and type, toString
 	 */
 	public static void displayInfo(Object obj) {
-		System.out.println(obj.getClass().getSimpleName().toString());
+		// Print object type
+		System.out.println("The object is of type: " + obj.getClass().getSimpleName());
+		// Print number of modifiers
+		System.out.println("The number of modifiers are: " + obj.getClass().getModifiers());
+		// Place object fields into array
+		Field[] fields = obj.getClass().getDeclaredFields();
+		// Print fields statement
+		System.out.print("The fields are: ");
+		// Iterate through the fields array
+		for (int i = 0; i < fields.length; i++) {
+			// Print the name and type of each field
+			System.out.print(fields[i].getName() + " = " + fields[i].getType().getName() + ", ");
+		}
+		// Place object methods into array
+		Method[] methods = obj.getClass().getDeclaredMethods();
+		// Print methods statement
+		System.out.print("\nThe methods are: ");
+		// Iterate through the fields array
+		for (int i = 0; i < methods.length; i++) {
+			// Print name and type of each method
+			System.out.print(methods[i].getName() + " = " + methods[i].getReturnType().getName() + ", ");
+		}
+		// Print object toString
+		System.out.println("The object toString: " + obj.toString());
 	}
 
 	/**
@@ -32,10 +70,10 @@ public class Info {
 	 * then interates through an array
 	 */
 	public static void displayInfo(Object obj1, Object obj2, Object... objN) {
-		System.out.println(obj1.getClass().getSimpleName().toString());
-		System.out.println(obj2.getClass().getSimpleName().toString());
-		for (int i = 0; i < objN.length; i++) {
-			System.out.println(objN[i].getClass().getSimpleName().toString());
+		displayInfo(obj1);
+		displayInfo(obj2);
+		for (Object object : objN) {
+			displayInfo(object);
 		}
 	}
 
@@ -44,9 +82,14 @@ public class Info {
 	 * the toString for each
 	 */
 	public static void displayInfo(Object[] obj) {
-		for (int i = 1; i < obj.length; i++) {
-			System.out.println(obj[i].getClass().getSimpleName().toString());
+		for (Object object : obj) {
+			displayInfo(object);
 		}
+	}
+
+	public static String get2DInfo(Object[][] objects) {
+		String info;
+		return info;
 	}
 
 	/**
@@ -57,11 +100,5 @@ public class Info {
 		String info;
 		info = obj.getClass().getSimpleName().toString();
 		return info;
-	}
-
-	public static void display2DInfo(Object[][] objects){
-		for (int i = 0, j = 0; i < objects.length; i++, j++){
-			i
-		}
 	}
 }
