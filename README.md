@@ -1,2 +1,6 @@
-Basic Project
-This is a basic maven project used to copy
+# Basic Auto Project
+Project which contains basic automation tests for various websites
+
+- Java
+- TestNG
+- Selenium
