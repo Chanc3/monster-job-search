@@ -1,5 +1,5 @@
 # Basic Auto Project
-Project which contains basic automation tests for various websites
+Project which contains basic automation test structure
 
 - Java
 - TestNG
